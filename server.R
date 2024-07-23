@@ -1,5 +1,6 @@
 # server
 library(shiny)
+library(tidyverse)
 library(ggplot2)
 
 posterior_data <- readRDS("model_data.RDS")
