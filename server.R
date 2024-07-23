@@ -48,20 +48,21 @@ server <- function(input, output) {
     final_df <- bind_cols(plot_data, plot_data2)
     
     ggplot(final_df, aes(x = Variable)) +
-      geom_ribbon(aes(ymin = Q10, ymax = Q90), fill = "orange", alpha = 0.2) +
-      geom_line(aes(y = Median, group = 1, color = "Pitcher 1"), size = 1) +
-      geom_line(aes(y = Q10, group = 1), color = "grey", size = 0.5) +
-      geom_line(aes(y = Q90, group = 1), color = "grey", size = 0.5) +
-      geom_ribbon(aes(ymin = Q10_1, ymax = Q90_1), fill = "green", alpha = 0.2) +
-      geom_line(aes(y = Median_1, group = 1, color = "Pitcher 2"), size = 1) +
-      geom_line(aes(y = Q10_1, group = 1), color = "grey", size = 0.5) +
-      geom_line(aes(y = Q90_1, group = 1), color = "grey", size = 0.5) +
+      geom_ribbon(aes(ymin = Q10, ymax = Q90), fill = "orange", alpha = 0.2, na.rm = TRUE) +
+      geom_line(aes(y = Median, group = 1, color = "Pitcher 1"), size = 1, na.rm = TRUE) +
+      geom_line(aes(y = Q10, group = 1), color = "grey", size = 0.5, na.rm = TRUE) +
+      geom_line(aes(y = Q90, group = 1), color = "grey", size = 0.5, na.rm = TRUE) +
+      geom_ribbon(aes(ymin = Q10_1, ymax = Q90_1), fill = "green", alpha = 0.2, na.rm = TRUE) +
+      geom_line(aes(y = Median_1, group = 1, color = "Pitcher 2"), size = 1, na.rm = TRUE) +
+      geom_line(aes(y = Q10_1, group = 1), color = "grey", size = 0.5, na.rm = TRUE) +
+      geom_line(aes(y = Q90_1, group = 1), color = "grey", size = 0.5, na.rm = TRUE) +
       labs(y = "Innings Pitched Until Retirement", x = "Survival Probability", color = "Legend") +
-      scale_y_continuous(limits = c(0, 1000)) +
-      scale_x_continuous(limits = c(0, 1)) +
+      scale_y_continuous(limits = c(0, 1000), expand = c(0, 0)) +
+      scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) +
       scale_color_manual(values = c("Pitcher 1" = "blue", "Pitcher 2" = "red")) +
       theme_minimal() +
       coord_flip() +
-      theme(legend.position = "top")
+      theme(legend.position = "right")
+    
   })
 }
