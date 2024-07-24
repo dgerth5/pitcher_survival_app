@@ -3,7 +3,7 @@ library(shiny)
 
 # Define UI for application
 ui <- fluidPage(
-  titlePanel("Innings Thrown Until Retirement Comparison"),
+  titlePanel("Pitcher Survival Comparison"),
   
   fluidRow(
     column(1, div(style = "margin-top: 25px;", strong("Pitcher 1:"))),
